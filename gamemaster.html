@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Master</title>
+		
+		<style type="text/css" link='gamemaster.css'></style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src='gamemaster.js'></script>
+
+
+	</head>
+	<body>
+		<h3>Trivia Master</h3>
+		<div id="log"></div>
+
+		<input id="msg" type="textbox"/><br>
+		<input type='button' id='btnSendQuestion' class='btnAction' value='Send Question'>
+		<input type='button' id='btnSendStatus' class='btnAction'  value='Send Status'>
+		<input type='button' id='btnDisplayConnections' class='btnAction'  value='Display Connections'>
+		<input type='button' id='btnDisplayPlayers' class='btnAction'  value='Display Players'>
+		<input type='button' id='btnDisplayMaster' class='btnAction'  value='Display Master'>
+		<input type='button' id='btnSQLTest' class='btnAction'  value='SQL Test'>
+		<input type='button' id='btnReconnect' class='btnAction'  value='Reconnect'>
+		<div id='divTeamList'><table id='tblTeamNames' border='1px'><tr><th>Team Name</th><th>Score</th></tr></table></div>
+	</body>
+</html>

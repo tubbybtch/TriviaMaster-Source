@@ -1,0 +1,23 @@
+html,
+body {
+		font:normal 0.9em arial,helvetica;
+		color: #eaeaea;
+		background-color: #753535;
+	}
+
+#log {
+		width:600px; 
+		height:300px; 
+		border:1px solid #7F9DB9; 
+		overflow:auto;
+	}
+#msg {
+		width:400px;
+	}
+.headerLabel {
+	font-size: large;
+	font-weight: bolder;
+}
+	
+
+	
