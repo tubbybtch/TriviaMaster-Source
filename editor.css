@@ -1,0 +1,36 @@
+html,
+body {
+		font:normal 0.9em arial,helvetica;
+		color: #ffffff;
+		background-color: #753535;
+	}
+
+#log {
+		width:600px; 
+		height:300px; 
+		border:1px solid #7F9DB9; 
+		overflow:auto;
+	}
+#msg {
+		width:400px;
+	}
+.headerLabel {
+	font-size: large;
+	font-weight: bolder;
+}
+.ui-widget-content {
+	background-color: rgb(239,239,128);
+	border: 0px solid #dddddd;
+}
+.ui-widget-header {
+	border: 0px solid #dddddd;
+}
+.ui-widget-header {
+	background-color: rgb(117,53,53);
+}
+.ui-tabs {
+	padding: 0em 0em;
+	padding-bottom: 1.5em;
+}	
+
+	

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Trivia Master Questions Editor</title>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">		
+		<link rel="stylesheet" href='editor.css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+
+		<script src='editquestions.js'></script>
+	</head>
+	<body>
+		<div id="divHeader">
+			<label id="lblGameName" class="headerLabel"></label> <br>
+			<label id="lblGameLocation" class="headerLabel"></label> <br>
+			<label id="lblGameDate" class="headerLabel"></label>
+			<input id="txtGameId" type="hidden">
+		</div>
+		<div id='divQuestions'>
+			<input type='button' value='Add Question' id='btnAddQuestion'>
+			<table id='tblQuestions' border='1px'><tr><th>Round</th><th>Rank</th><th>Prompt</th></tr></table>
+		</div>
+		<div id='divQuestionFieldsContainer'>
+			<div id='divQuestionEditFields'>
+				<ul>
+					<li><a href='#tabSummary'>Summary</a></li>
+					<li><a href='#tabAnswers'>Answer(s)</a></li>
+					<li><a href='#tabChoices'>Choice(s)</a></li>
+				</ul>
+				<div id='tabSummary'>
+					<input name='id' data-type='number' type='hidden' id='txtID' class='editQuestionField'>
+					Round: <input name='round' data-type='number' type='text' id='txtRound' class='editQuestionField'>  Rank: <input name='rank' type='text' data-type='number' id='txtRank' class='editQuestionField'><br>
+					Prompt: <textarea name='prompt' data-type='string' rows='5' cols='60' id='txtPrompt' class='editQuestionField'></textarea>  <br>
+					 Time Limit (seconds): <input name='time_limit'  data-type='number' type='text' id='txtTimeLimit' class='editQuestionField'>  <br>
+					Explanation: <textarea name='explanation'  data-type='string' rows='5' cols='60' id='txtExplanation' class='editQuestionField'></textarea>  <br>
+				</div>
+				<div id='tabAnswers'>
+					Number of Answers: <input name='num_answers' type='text' data-type='number' id='txtNumAnswers' class='editQuestionField'><br> 
+					Correct Answer(s):<br>
+									1. <input name='answer1' data-type='string' type='text' id='txtAnswer1' class='editQuestionField'>
+									2. <input name='answer2' data-type='string' type='text' id='txtAnswer2' class='editQuestionField'>
+									3. <input name='answer3' data-type='string' type='text' id='txtAnswer3' class='editQuestionField'><br>
+									4. <input name='answer4' data-type='string' type='text' id='txtAnswer4' class='editQuestionField'>
+									5. <input name='answer5' data-type='string' type='text' id='txtAnswer5' class='editQuestionField'>
+									6. <input name='answer6' data-type='string' type='text' id='txtAnswer6' class='editQuestionField'><br>
+									7. <input name='answer7' data-type='string' type='text' id='txtAnswer7' class='editQuestionField'>
+									8. <input name='answer8' data-type='string' type='text' id='txtAnswer8' class='editQuestionField'>
+									9. <input name='answer9' data-type='string' type='text' id='txtAnswer9' class='editQuestionField'><br>
+									10. <input name='answer10' data-type='string' type='text' id='txtAnswer10' class='editQuestionField'><br>
+				</div>
+				<div id='tabChoices'>
+					Number of Choices: <input  name='num_choices' data-type='number' type='text' id='txtNumChoices class='editQuestionField'><br>
+					Choices:<br>
+										1. <input name='choice1' data-type='string' type='text' id='txtChoice1' class='editQuestionField'>
+										2. <input name='choice2' data-type='string' type='text' id='txtChoice2' class='editQuestionField'>
+										3. <input name='choice3' data-type='string' type='text' id='txtChoice3' class='editQuestionField'><br>
+										4. <input name='choice4' data-type='string' type='text' id='txtChoice4' class='editQuestionField'>
+										5. <input name='choice5' data-type='string' type='text' id='txtChoice5' class='editQuestionField'>
+										6. <input name='choice6' data-type='string' type='text' id='txtChoice6' class='editQuestionField'><br>
+										7. <input name='choice7' data-type='string' type='text' id='txtChoice7' class='editQuestionField'>
+										8. <input name='choice8' data-type='string' type='text' id='txtChoice8' class='editQuestionField'>
+										9. <input name='choice9' data-type='string' type='text' id='txtChoice9' class='editQuestionField'><br>
+										10. <input name='choice10' data-type='string' type='text' id='txtChoice10' class='editQuestionField'><br>
+				</div>
+				<div id="divQuestionButtons">
+					<input type="button" id="btnSaveQuestion" value="Save">
+					<input type="button" id="btnCancelQuestion" value="Cancel">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
