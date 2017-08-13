@@ -1,0 +1,8 @@
+To Do List:
+1. Question Types
+  A. Multiple Choice - 1 answer from multiple choices
+  B. Multiple Answer Type-In - > 1 answer, user types in answers
+  C. Multiple Answer Choices - User selects from choice list multiple answers
+  D. Display Picture Freeform Answer - Picture/Prompt display, user types in answer
+  E. Multiple Choice Pictures - 1 answer from tableau of pictures
+  
