@@ -33,6 +33,8 @@ function init() {
 	$("#btnSQLTest").click(sqlTest);
 	$("#btnQuit").click(quit);
 	$("#btnReconnect").click(reconnect);
+	
+	$.get("services/gameinfo.php",populateGameTable,{},"JSON");
 }
 
 function receive(rec) {
@@ -53,6 +55,64 @@ function receive(rec) {
 		
 		
 		
+}
+
+function populateGameTable(data) {
+	$("#tblGames > tbody").empty();
+	$("#tblGames > tbody").append("<tr><th>Date</th><th>Name</th><th>Location</th><th>Play Game</th></tr>");
+	for (ix=0; ix<data.length; ix++) {
+		var g_id = data[ix]["game_id"];
+		//playButton = "<input type='button' value='Edit' data-id='" + g_id + "' class='btnEdit'>";
+		playButton = "<img src='./images/play.png'  alt='Play this game' value='Play' data-id='" + g_id + "' class='btnPlay' width='64' height='64'>";
+
+		$("#tblGames > tbody").append("<tr><td>" + data[ix]["game_date"] + 
+										"</td><td>" + data[ix]["game_name"] +
+										"</td><td>" + data[ix]["game_location"] +
+										"</td><td>" + playButton + "</td></tr>");
+	}
+	
+	$(".btnPlay").unbind("click");
+	$(".btnPlay").click(playGame);
+}
+
+function playGame(evt) {
+	game_id = $(evt.target).attr("data-id");
+	//log(game_id);
+	$("#gamelist").slideUp();
+	// retrieve questions for game
+	req = {game_id: game_id};
+	$.get("services/questioninfo.php", req, gotQuestions, "JSON");
+}
+
+function gotQuestions(data) {
+	//log(data);
+	//populate question table
+	$("#divQuestions").show();
+	
+	$("#tblQuestions > tbody").empty();
+	$("#tblQuestions > tbody").append("<tr><th>Round</th><th>Rank</th><th>Prompt</th><th>Options</th></tr>");
+	
+	for (ix=0; ix<data.length; ix++) {
+		var q_id = data[ix]["id"];
+		playButton = "<img src='./images/play.png'  alt='Ask this question' value='Play' data-id='" + q_id + "' class='btnAsk' width='64' height='64'>";
+					
+						
+
+		$("#tblQuestions > tbody").append("<tr><td>" + data[ix]["round"] + 
+										"</td><td>" + data[ix]["rank"] +
+										"</td><td>" + data[ix]["prompt"] +
+										"</td><td>" + playButton + "</td></tr>");
+	}
+
+	$(".btnAsk").unbind("click");
+	$(".btnAsk").click(playQuestion);
+}
+
+function playQuestion(evt) {
+	q_id = $(evt.target).attr("data-id");
+
+	req = {question_id: q_id};
+	$.get("services/questioninfo.php", req, sendQuestion, "JSON");	
 }
 
 function drawTeamList(teams) {
@@ -116,17 +176,22 @@ function displayMaster() {
 	send(JSON.stringify(dataMap));
 }
 
-function sendQuestion(){
+function retrieveQuestion(q_id) {
 
+}
+
+
+function sendQuestion(data){
+	qrec = data[0];
 	question=	{role: "MASTER",
 					route: "PLAYERS",
 					type: "QUESTION",
 					data: {
-						question: "What is the capital of Washington State?",
-						guess1: "Salem",
-						guess2: "Seattle",
-						guess3: "Olympia",
-						guess4: "Spokane"
+						question: qrec["prompt"],
+						guess1: qrec["choice1"],
+						guess2: qrec["choice2"],
+						guess3: qrec["choice3"],
+						guess4: qrec["choice4"]
 						}
 				};
 	
@@ -161,5 +226,8 @@ function reconnect() {
 }
 
 // Utilities
-function log(msg){console.log(msg); }
+function log(msg){
+	console.log(msg); 
+	//$("#txtLog").append(JSON.stringify(msg) + "\n");
+}
 
